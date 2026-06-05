@@ -1,0 +1,43 @@
+---
+interface Props {
+    compact?: boolean;
+    menuItems: readonly MenuItem[];
+}
+
+const { compact = false, menuItems } = Astro.props;
+
+const subMenuClasses = ['p-2'];
+if (!compact) {
+    subMenuClasses.push('bg-base-100', 'w-40', 'z-1');
+}
+---
+
+{
+    menuItems.map((menuItem) => {
+        if ('link' in menuItem) {
+            return (
+                <li>
+                    <a href={menuItem.link}>{menuItem.label}</a>
+                </li>
+            );
+        }
+        return (
+            <li>
+                <details>
+                    <summary>{menuItem.label}</summary>
+                    <ul class={subMenuClasses.join(' ')}>
+                        {menuItem.subMenuItems.map((subMenuItem) => {
+                            if ('link' in subMenuItem) {
+                                return (
+                                    <li>
+                                        <a href={subMenuItem.link}>{subMenuItem.label}</a>
+                                    </li>
+                                );
+                            }
+                        })}
+                    </ul>
+                </details>
+            </li>
+        );
+    })
+}

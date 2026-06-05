@@ -8,7 +8,7 @@ interface Props {
 const { headline, image, buttonText } = Astro.props;
 ---
 
-<div class="hero bg-base-200 min-h-screen">
+<div class="hero bg-base-200 min-h-[calc(100vh-4rem)]">
     <div class="hero-content text-center">
         {image ? <img src={image} class="max-w-sm rounded-lg shadow-2xl" /> : null}
         <div class="max-w-md">

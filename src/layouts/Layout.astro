@@ -1,5 +1,11 @@
+---
+import '../assets/app.css';
+import Navbar from '../components/widgets/navbar/Navbar.astro';
+import { NavbarData } from '../data/Navbar.ts';
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
@@ -7,7 +13,10 @@
         <meta name="generator" content={Astro.generator} />
         <title>RM Industries</title>
     </head>
-    <body>
-        <slot />
+    <body class="flex flex-col min-h-screen">
+        <Navbar title={NavbarData.title} menuItems={NavbarData.menuItems} />
+        <main class="grow">
+            <slot />
+        </main>
     </body>
 </html>
