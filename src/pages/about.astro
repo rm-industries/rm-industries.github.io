@@ -1,25 +1,24 @@
 ---
 import Container from '../components/ui/Container.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { resolveSiteHref } from '../lib/paths';
 ---
 
-<BaseLayout title="About" description="Learn how this generic Forge starter is structured and how to make it your own.">
-  <Container size="md" class="pb-16">
+<BaseLayout title="About" description="About RM Industries and our approach to building useful software.">
+  <Container size="md" class="py-16 sm:py-24 lg:py-28">
     <article class="prose mx-auto">
-      <div class="badge badge-outline">About this starter</div>
-      <h1>A useful foundation, not a finished identity.</h1>
-      <p class="lead">Forge provides an approachable structure for a content-driven website while leaving its subject, voice, and visual identity up to you.</p>
+      <div class="text-primary mb-6 font-mono text-xs font-medium tracking-[0.16em] uppercase">About RM Industries</div>
+      <h1 class="text-[clamp(3rem,7vw,5rem)] leading-none tracking-[-0.055em]">Small, useful software for problems worth solving.</h1>
+      <p class="lead">RM Industries is an independent software company built around a simple idea: pay attention to the points of friction people accept every day, then make something better.</p>
 
-      <h2>What to replace first</h2>
-      <p>Start with the typed site configuration, then replace these example articles with material that reflects your project. Shared layouts and metadata will update every route consistently.</p>
+      <h2>How we work</h2>
+      <p>We look for specific, meaningful pain points and shape focused products around them. Projects stay private while they are exploratory. When something is ready to stand on its own, we share it here.</p>
 
-      <h2>What is already connected</h2>
-      <p>Semantic navigation, responsive layout primitives, local fonts, theme-aware styling, canonical metadata, a sitemap, an RSS feed, and automated accessibility checks are ready to extend.</p>
+      <h2>What we’re building</h2>
+      <p>Our current public project is Forge, an opinionated Astro starter for building modern, content-driven websites with sensible defaults and production-ready automation.</p>
 
       <p>
-        <a href={resolveSiteHref('/articles/')}>Explore the example articles</a> or return to the
-        <a href={resolveSiteHref('/')}>homepage</a>.
+        See <a href="https://github.com/rm-industries" target="_blank" rel="noopener noreferrer">our work on GitHub</a>
+        {' '}or email{' '}<a href="mailto:rahul@rm-industries.com">rahul@rm-industries.com</a>.
       </p>
     </article>
   </Container>

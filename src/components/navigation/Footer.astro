@@ -5,11 +5,14 @@ import { resolveSiteHref } from '../../lib/paths';
 import Container from '../ui/Container.astro';
 ---
 
-<footer class="bg-base-200">
-  <Container class="footer footer-horizontal py-10">
+<footer class="border-base-content/10 bg-base-200 border-t">
+  <Container class="footer footer-horizontal py-12">
     <aside>
-      <h2>{site.name}</h2>
-      <p>{site.description}</p>
+      <a href={resolveSiteHref('/')} class="text-base-content inline-flex items-center gap-3 font-bold tracking-tight no-underline">
+        <img src={resolveSiteHref('/logo.svg')} width="48" height="32" alt="" />
+        <h2>{site.name}</h2>
+      </a>
+      <p class="max-w-sm">{site.description}</p>
       <p>© {new Date().getFullYear()} {site.name}</p>
     </aside>
 

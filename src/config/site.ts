@@ -76,7 +76,7 @@ export const defineSiteConfig = (config: SiteConfig): Readonly<SiteConfig> =>
 
 export const site = defineSiteConfig({
   name: 'RM Industries',
-  description: 'Independent software and web projects by RM Industries',
+  description: 'A small software company turning everyday pain points into focused, useful products.',
   author: 'RM Industries',
   url: 'https://www.rm-industries.com/',
   repository: 'rm-industries/rm-industries.github.io',
@@ -84,10 +84,13 @@ export const site = defineSiteConfig({
   socialImage: '/social-card.svg',
   navigation: [
     { label: 'Home', href: '/' },
-    { label: 'Articles', href: '/articles/' },
+    { label: 'Work', href: '/#work' },
     { label: 'About', href: '/about/' },
   ],
-  socialLinks: [],
+  socialLinks: [
+    { label: 'GitHub', href: 'https://github.com/rm-industries' },
+    { label: 'Email', href: 'mailto:rahul@rm-industries.com' },
+  ],
 });
 
 export const cmsBranding = Object.freeze({

@@ -3,7 +3,7 @@ import { expect, test } from '@playwright/test';
 import { site } from '../src/config/site';
 import { resolvePreviewPath, resolvePreviewUrl } from './preview';
 
-const routes = ['/', '/about/', '/articles/', '/articles/designing-a-calm-starting-point/', '/admin/', '/404/'];
+const routes = ['/', '/about/', '/articles/', '/admin/', '/404/'];
 
 test('serves every baseline page with configured canonical and social metadata', async ({ page }) => {
   for (const route of routes) {
@@ -27,16 +27,10 @@ test('serves the content manager without allowing search indexing', async ({ pag
   await expect(page.locator('body')).not.toBeEmpty();
 });
 
-test('renders generic article tags on listings and detail pages', async ({ page }) => {
+test('keeps the article system ready without publishing placeholder content', async ({ page }) => {
   await page.goto(resolvePreviewPath('/articles/'));
-  await expect(
-    page
-      .locator(`a[href="${resolvePreviewPath('/articles/designing-a-calm-starting-point/')}"]`)
-      .getByLabel('Article tags'),
-  ).toContainText('Design');
-
-  await page.goto(resolvePreviewPath('/articles/designing-a-calm-starting-point/'));
-  await expect(page.getByLabel('Article tags')).toContainText('Defaults');
+  await expect(page.getByRole('heading', { level: 1, name: 'Articles' })).toBeVisible();
+  await expect(page.locator('article')).toHaveCount(0);
 });
 
 test('resolves every internal page link', async ({ page, request }) => {
@@ -72,8 +66,7 @@ test('resolves every internal page link', async ({ page, request }) => {
 test('serves feed, crawler, manifest, and not-found metadata', async ({ request }) => {
   const feed = await request.get(resolvePreviewPath('/rss.xml'));
   expect(feed.ok()).toBe(true);
-  expect(await feed.text()).toContain(new URL('articles/designing-a-calm-starting-point/', site.url).href);
-  expect(await feed.text()).not.toContain('future-draft');
+  expect(await feed.text()).toContain('<title>RM Industries</title>');
 
   const robots = await request.get(resolvePreviewPath('/robots.txt'));
   expect(robots.ok()).toBe(true);

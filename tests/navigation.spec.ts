@@ -8,11 +8,10 @@ test('uses primary navigation to move between pages and identify the current pag
   const navigation = page.getByRole('navigation', { name: 'Primary navigation' });
   await expect(navigation.getByRole('link', { name: 'Home' })).toHaveAttribute('aria-current', 'page');
 
-  await navigation.getByRole('link', { name: 'Articles' }).click();
-  await expect(page).toHaveURL(resolvePreviewUrl('/articles/'));
-  await expect(page.getByRole('heading', { level: 1, name: 'Articles' })).toBeVisible();
+  await navigation.getByRole('link', { name: 'About' }).click();
+  await expect(page).toHaveURL(resolvePreviewUrl('/about/'));
   await expect(
-    page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Articles' }),
+    page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'About' }),
   ).toHaveAttribute('aria-current', 'page');
 });
 
@@ -27,19 +26,15 @@ test('opens mobile navigation and follows a configured link', async ({ page }) =
 
   await expect(page).toHaveURL(resolvePreviewUrl('/about/'));
   await expect(
-    page.getByRole('heading', { level: 1, name: 'A useful foundation, not a finished identity.' }),
+    page.getByRole('heading', { level: 1, name: 'Small, useful software for problems worth solving.' }),
   ).toBeVisible();
 });
 
-test('moves from the article listing into an article and through article pagination', async ({ page }) => {
-  await page.goto(resolvePreviewPath('/articles/'));
+test('links the featured project to its public repository', async ({ page }) => {
+  await page.goto(resolvePreviewPath('/'));
 
-  await page.getByRole('link', { name: /Designing a calm starting point/u }).click();
-  await expect(page).toHaveURL(resolvePreviewUrl('/articles/designing-a-calm-starting-point/'));
-  await expect(page.getByRole('heading', { level: 1, name: 'Designing a calm starting point' })).toBeVisible();
-
-  const articleNavigation = page.getByRole('navigation', { name: 'Article navigation' });
-  await articleNavigation.getByRole('link', { name: /Content that travels well/u }).click();
-  await expect(page).toHaveURL(resolvePreviewUrl('/articles/content-that-travels-well/'));
-  await expect(page.getByRole('heading', { level: 1, name: 'Content that travels well' })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Explore Forge on GitHub/u })).toHaveAttribute(
+    'href',
+    'https://github.com/rm-industries/forge',
+  );
 });

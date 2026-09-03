@@ -8,7 +8,6 @@ const publicRoutes = [
   { name: 'home', path: '/' },
   { name: 'about', path: '/about/' },
   { name: 'article listing', path: '/articles/' },
-  { name: 'article detail', path: '/articles/designing-a-calm-starting-point/' },
   { name: 'not found', path: '/does-not-exist/' },
 ] as const;
 
@@ -46,7 +45,7 @@ test('identifies the current primary navigation item', async ({ page }) => {
   await page.goto(resolvePreviewPath('/'));
 
   await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Home' })).toHaveAttribute('aria-current', 'page');
+  await expect(page.getByRole('link', { name: 'Home', exact: true })).toHaveAttribute('aria-current', 'page');
 });
 
 test('moves keyboard users directly to the main content', async ({ browserName, page }) => {
@@ -79,7 +78,7 @@ test('honors reduced-motion preferences', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.goto(resolvePreviewPath('/'));
 
-  const motionStyles = await page.getByRole('link', { name: 'Browse the articles' }).evaluate((element) => {
+  const motionStyles = await page.getByRole('link', { name: 'See what we’re building' }).evaluate((element) => {
     const styles = getComputedStyle(element);
 
     return {

@@ -11,7 +11,7 @@ const normalizePath = (path: string) => {
 export const isExternalHref = (href: string) => /^https?:\/\//u.test(href);
 
 export const isCurrentPath = (currentPath: string, href: string) => {
-  if (!href.startsWith('/')) return false;
+  if (!href.startsWith('/') || href.includes('#')) return false;
 
   const current = normalizePath(currentPath);
   const target = normalizePath(href);

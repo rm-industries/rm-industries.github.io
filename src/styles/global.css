@@ -32,6 +32,9 @@ html {
 body {
   min-height: 100vh;
   margin: 0;
+  background:
+    radial-gradient(circle at 90% 5%, color-mix(in oklab, var(--color-primary) 11%, transparent), transparent 28rem),
+    var(--color-base-100);
 }
 
 .prose {
