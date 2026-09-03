@@ -1,11 +1,48 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Container from '../components/ui/Container.astro';
+import ProblemPath from '../components/company/ProblemPath.astro';
+import PrincipleCard from '../components/company/PrincipleCard.astro';
+import { resolveSiteHref } from '../lib/paths';
 ---
 
-<Layout>
-    <Welcome />
-</Layout>
+<BaseLayout>
+  <Container class="pb-20">
+    <section class="hero py-16 sm:py-24 lg:py-32" aria-labelledby="company-heading">
+      <div class="hero-content grid w-full max-w-none gap-12 p-0 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+        <div>
+          <div class="badge badge-primary badge-outline badge-lg mb-7 h-auto py-2 font-mono text-sm font-bold tracking-[0.1em] uppercase sm:text-base">Independent software company</div>
+          <h1 id="company-heading" class="m-0 max-w-[11ch] text-[clamp(3.25rem,7vw,6.5rem)] leading-[0.94] font-extrabold tracking-[-0.06em]">We turn everyday friction into useful software.</h1>
+          <p class="mt-8 max-w-xl text-xl leading-relaxed sm:text-2xl">RM Industries looks closely at how people work, finds the parts that get in the way, and builds focused tools to make them better.</p>
+          <div class="mt-9 flex flex-wrap gap-3"><a href="#work" class="btn btn-primary">See what we’re building <span aria-hidden="true">↓</span></a><a href="/about/" class="btn btn-ghost">How we work <span aria-hidden="true">→</span></a></div>
+        </div>
+        <ProblemPath />
+      </div>
+    </section>
+
+    <section class="py-12 sm:py-20" aria-labelledby="approach-heading">
+      <div class="mb-10 max-w-2xl"><p class="text-primary mb-3 font-mono text-sm font-bold tracking-[0.12em] uppercase">Our approach</p><h2 id="approach-heading" class="m-0 text-[clamp(2.25rem,5vw,4rem)] leading-none font-bold tracking-[-0.045em]">Small on purpose. Useful by design.</h2></div>
+      <div class="grid gap-5 md:grid-cols-3">
+        <PrincipleCard number="01" title="Notice the friction" description="Start with a real pain point, not a feature list or a trend." />
+        <PrincipleCard number="02" title="Build the focused thing" description="Make the smallest product that solves the problem exceptionally well." accent="secondary" />
+        <PrincipleCard number="03" title="Share when it’s ready" description="Keep exploring privately, then publish work that can stand on its own." accent="accent" />
+      </div>
+    </section>
+
+    <section id="work" class="py-12 sm:py-20" aria-labelledby="work-heading">
+      <div class="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><p class="text-primary mb-3 font-mono text-base font-bold tracking-[0.12em] uppercase sm:text-lg">Current work</p><h2 id="work-heading" class="m-0 text-[clamp(2.25rem,5vw,4rem)] leading-none font-bold tracking-[-0.045em]">Meet Forge.</h2></div><div class="badge badge-success badge-outline gap-2 py-3 font-semibold"><span class="status status-success"></span> Actively maintained</div></div>
+      <article class="card bg-base-200 border-base-300 overflow-hidden border shadow-lg lg:card-side">
+        <figure class="bg-neutral relative min-h-72 overflow-hidden p-10 lg:w-[42%]"><div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(currentColor 1px, transparent 1px); background-size: 24px 24px;"></div><div class="relative grid aspect-square w-48 place-items-center p-3 sm:w-64 sm:p-4"><img class="size-full object-contain" src={resolveSiteHref('/forge-logo.svg')} width="224" height="224" alt="Forge" /></div></figure>
+        <div class="card-body justify-center gap-6 p-7 sm:p-10 lg:p-14">
+          <div class="flex flex-wrap gap-2"><span class="badge badge-primary">Open source</span><span class="badge badge-outline">Astro</span><span class="badge badge-outline">Developer tooling</span></div>
+          <div><h3 class="card-title mb-3 text-4xl sm:text-5xl">A better starting point for the web.</h3><p class="m-0 max-w-2xl text-lg leading-relaxed">Forge is an opinionated Astro starter with beautiful defaults, Git-backed content management, and production-ready GitHub automation.</p></div>
+          <div class="card-actions"><a href="https://github.com/rm-industries/forge" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Explore Forge on GitHub <span aria-hidden="true">↗</span></a></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="py-12 sm:py-20" aria-labelledby="contact-heading">
+      <div class="card bg-base-300 text-base-content overflow-hidden shadow-xl"><div class="card-body gap-7 p-8 sm:p-12 lg:flex-row lg:items-end lg:justify-between"><div><p class="mb-3 font-mono text-sm font-bold tracking-[0.12em] uppercase">Keep an eye on the workshop</p><h2 id="contact-heading" class="m-0 max-w-[14ch] text-3xl leading-tight font-bold sm:text-5xl">Follow the work as it takes shape.</h2></div><div class="card-actions shrink-0"><a class="btn btn-primary" href="https://github.com/rm-industries" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="btn" href="mailto:rahul@rm-industries.com">Email us ↗</a></div></div></div>
+    </section>
+  </Container>
+</BaseLayout>

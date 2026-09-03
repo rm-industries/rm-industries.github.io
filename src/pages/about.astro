@@ -1,0 +1,25 @@
+---
+import Container from '../components/ui/Container.astro';
+import PrincipleCard from '../components/company/PrincipleCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About" description="About RM Industries and our approach to building useful software.">
+  <Container class="py-16 sm:py-24 lg:py-28">
+    <section class="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end" aria-labelledby="about-heading">
+      <div><div class="badge badge-primary badge-outline badge-lg mb-7 h-auto py-2 font-mono text-sm font-bold tracking-[0.1em] uppercase">About RM Industries</div><h1 id="about-heading" class="m-0 text-[clamp(3rem,7vw,6rem)] leading-[0.95] font-extrabold tracking-[-0.06em]">Curious about the rough edges.</h1></div>
+      <div class="card bg-base-200 border-base-300 border shadow-sm"><div class="card-body p-7 sm:p-10"><p class="m-0 text-xl leading-relaxed sm:text-2xl">RM Industries is an independent software company built around a simple idea: pay attention to the points of friction people accept every day, then make something better.</p></div></div>
+    </section>
+    <section class="py-16 sm:py-24" aria-labelledby="process-heading">
+      <div class="mb-10 max-w-2xl"><p class="text-primary mb-3 font-mono text-sm font-bold tracking-[0.12em] uppercase">How we work</p><h2 id="process-heading" class="m-0 text-[clamp(2.25rem,5vw,4rem)] leading-none font-bold tracking-[-0.045em]">Deliberate from problem to product.</h2></div>
+      <div class="grid gap-5 md:grid-cols-3">
+        <PrincipleCard number="01" title="Look closely" description="Find specific, meaningful pain points in the way people already work." />
+        <PrincipleCard number="02" title="Stay focused" description="Shape a clear product around the problem and resist unnecessary surface area." accent="secondary" />
+        <PrincipleCard number="03" title="Earn the reveal" description="Explore in private and share a project only when it is genuinely useful." accent="accent" />
+      </div>
+    </section>
+    <section class="card bg-base-300 text-base-content overflow-hidden shadow-xl" aria-labelledby="building-heading">
+      <div class="card-body gap-6 p-8 sm:p-12 lg:flex-row lg:items-center lg:justify-between"><div class="max-w-2xl"><p class="mb-3 font-mono text-sm font-bold tracking-[0.12em] uppercase">What we’re building</p><h2 id="building-heading" class="card-title mb-4 text-4xl sm:text-5xl">Forge is our current public project.</h2><p class="m-0 text-lg leading-relaxed">An opinionated Astro starter for modern, content-driven websites with sensible defaults and production-ready automation.</p></div><div class="card-actions shrink-0"><a class="btn btn-primary" href="https://github.com/rm-industries" target="_blank" rel="noopener noreferrer">Our work on GitHub ↗</a><a class="btn" href="mailto:rahul@rm-industries.com">Email us ↗</a></div></div>
+    </section>
+  </Container>
+</BaseLayout>

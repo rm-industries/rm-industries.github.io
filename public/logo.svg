@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 64" role="img" aria-labelledby="title">
+  <title id="title">RM Industries</title>
+  <style>
+    .frame { fill: #4c4f69; }
+    .accent { fill: #cba6f7; }
+    @media (prefers-color-scheme: dark) {
+      .frame { fill: #cdd6f4; }
+      .accent { fill: #cba6f7; }
+    }
+  </style>
+  <path class="frame" d="M4 10h22c11 0 18 6 18 16 0 7-3 12-10 15l14 13-8 7-19-18h-6v17H4V10Zm11 10v13h11c5 0 8-2 8-7s-3-6-8-6H15Z"/>
+  <path class="accent" d="M50 10h11l12 20 12-20h11v50H85V29L73 48 61 29v31H50V10Z"/>
+</svg>
