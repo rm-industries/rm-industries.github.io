@@ -1,0 +1,11 @@
+---
+interface Props { number: string; title: string; description: string; accent?: 'primary' | 'secondary' | 'accent'; }
+const { number, title, description, accent = 'primary' } = Astro.props;
+const badgeClass = { primary: 'badge-primary', secondary: 'badge-secondary', accent: 'badge-accent' }[accent];
+---
+<article class="card bg-base-200 border-base-300 border shadow-sm">
+  <div class="card-body gap-5">
+    <span class:list={["badge badge-lg font-mono", badgeClass]}>{number}</span>
+    <div><h3 class="card-title mb-2 text-2xl">{title}</h3><p class="m-0 leading-relaxed">{description}</p></div>
+  </div>
+</article>

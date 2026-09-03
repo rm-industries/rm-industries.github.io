@@ -2,7 +2,7 @@ import { flavors } from '@catppuccin/palette';
 import { expect, test } from '@playwright/test';
 import type { Page } from '@playwright/test';
 
-import { previewOrigin, resolvePreviewPath } from './preview';
+import { resolvePreviewPath } from './preview';
 
 const toRgb = (hex: string) => {
   const value = Number.parseInt(hex.slice(1), 16);
@@ -33,7 +33,10 @@ test('makes every Catppuccin flavor available explicitly', async ({ page }) => {
   }
 });
 
-test('serves fonts locally and presents a visible keyboard focus indicator', async ({ browserName, page }) => {
+test('uses system fonts without remote requests and presents a visible keyboard focus indicator', async ({
+  browserName,
+  page,
+}) => {
   const fontRequests: string[] = [];
   page.on('request', (request) => {
     if (request.resourceType() === 'font') fontRequests.push(request.url());
@@ -44,6 +47,5 @@ test('serves fonts locally and presents a visible keyboard focus indicator', asy
 
   await expect(page.locator('a').first()).toBeFocused();
   await expect(page.locator('a').first()).not.toHaveCSS('outline-style', 'none');
-  expect(fontRequests.length).toBeGreaterThan(0);
-  expect(fontRequests.every((url) => new URL(url).origin === previewOrigin)).toBe(true);
+  expect(fontRequests).toEqual([]);
 });

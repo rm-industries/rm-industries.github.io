@@ -25,9 +25,7 @@ test('opens mobile navigation and follows a configured link', async ({ page }) =
   await navigation.getByRole('link', { name: 'About' }).click();
 
   await expect(page).toHaveURL(resolvePreviewUrl('/about/'));
-  await expect(
-    page.getByRole('heading', { level: 1, name: 'Small, useful software for problems worth solving.' }),
-  ).toBeVisible();
+  await expect(page.getByRole('heading', { level: 1, name: 'Curious about the rough edges.' })).toBeVisible();
 });
 
 test('links the featured project to its public repository', async ({ page }) => {
