@@ -3,12 +3,12 @@
   <desc>RM Industries social sharing card</desc>
   <rect width="1200" height="630" fill="#1e1e2e" />
   <rect x="72" y="72" width="1056" height="486" rx="40" fill="#181825" stroke="#45475a" stroke-width="2" />
-  <g transform="translate(132 132) scale(1.6875)">
-    <path d="M8 12h19c10 0 17 6 17 15 0 6-3 11-9 13l13 12-7 7-18-17h-5v17H8V12Zm10 9v12h9c5 0 7-2 7-6s-2-6-7-6h-9Z" fill="#cdd6f4" />
-    <path d="M44 12h12v47H46V29l-9 8-7-7 14-13v-5Z" fill="#cba6f7" />
+  <g transform="translate(132 120) scale(1.8)">
+    <path d="M4 10h22c11 0 18 6 18 16 0 7-3 12-10 15l14 13-8 7-19-18h-6v17H4V10Zm11 10v13h11c5 0 8-2 8-7s-3-6-8-6H15Z" fill="#cdd6f4" />
+    <path d="M50 10h11l12 20 12-20h11v50H85V29L73 48 61 29v31H50V10Z" fill="#cba6f7" />
   </g>
   <text x="132" y="347" fill="#cdd6f4" font-family="system-ui, sans-serif" font-size="88" font-weight="700">RM Industries</text>
-  <text x="132" y="427" fill="#bac2de" font-family="system-ui, sans-serif" font-size="34">Useful software starts with a real problem.</text>
+  <text x="132" y="427" fill="#bac2de" font-family="system-ui, sans-serif" font-size="34">We turn everyday friction into useful software.</text>
   <line x1="132" y1="488" x2="1068" y2="488" stroke="#45475a" stroke-width="2" />
   <text x="1068" y="528" fill="#f9e2af" font-family="monospace" font-size="22" text-anchor="end">rm-industries.com</text>
 </svg>
