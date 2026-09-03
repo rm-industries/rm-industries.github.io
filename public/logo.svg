@@ -2,7 +2,7 @@
   <title id="title">RM Industries</title>
   <style>
     .frame { fill: #4c4f69; }
-    .accent { fill: #8839ef; }
+    .accent { fill: #cba6f7; }
     @media (prefers-color-scheme: dark) {
       .frame { fill: #cdd6f4; }
       .accent { fill: #cba6f7; }
