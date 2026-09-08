@@ -28,11 +28,11 @@ test('opens mobile navigation and follows a configured link', async ({ page }) =
   await expect(page.getByRole('heading', { level: 1, name: 'Curious about the rough edges.' })).toBeVisible();
 });
 
-test('links the featured project to its public repository', async ({ page }) => {
+test('links the featured project to its public website', async ({ page }) => {
   await page.goto(resolvePreviewPath('/'));
 
-  await expect(page.getByRole('link', { name: /Explore Forge on GitHub/u })).toHaveAttribute(
+  await expect(page.getByRole('link', { name: /Explore Forge/u })).toHaveAttribute(
     'href',
-    'https://github.com/rm-industries/forge',
+    'https://www.rm-industries.com/forge/',
   );
 });
