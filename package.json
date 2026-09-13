@@ -22,7 +22,7 @@
     "lint:markdown": "markdownlint \"**/*.md\" --ignore-path .gitignore",
     "lint:markdown:fix": "markdownlint --fix \"**/*.md\" --ignore-path .gitignore",
     "lighthouse:autorun": "lhci autorun",
-    "lighthouse:ci": "npm run build && node scripts/run-lighthouse.ts",
+    "lighthouse:ci": "node scripts/run-lighthouse.ts",
     "spellcheck": "cspell \"**\"",
     "typecheck": "astro sync && tsc --noEmit",
     "test": "npm run test:unit",
