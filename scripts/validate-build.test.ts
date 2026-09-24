@@ -19,6 +19,11 @@ const requiredPaths = [
 ] as const;
 
 const fixtures: string[] = [];
+const sitemapIndex = `<?xml version="1.0"?><sitemapindex>
+  <sitemap><loc>https://www.rm-industries.com/sitemap-0.xml</loc></sitemap>
+  <sitemap><loc>https://www.rm-industries.com/forge/sitemap-index.xml</loc></sitemap>
+  <sitemap><loc>https://www.rm-industries.com/etch/sitemap-index.xml</loc></sitemap>
+</sitemapindex>`;
 
 const createFixture = async () => {
   const fixture = await mkdtemp(join(tmpdir(), 'forge-build-output-'));
@@ -26,7 +31,14 @@ const createFixture = async () => {
   for (const path of requiredPaths) {
     const output = join(fixture, path);
     await mkdir(dirname(output), { recursive: true });
-    await writeFile(output, path.endsWith('.html') ? '<!doctype html><main>Forge</main>' : 'Forge\n');
+    await writeFile(
+      output,
+      path === 'sitemap-index.xml'
+        ? sitemapIndex
+        : path.endsWith('.html')
+          ? '<!doctype html><main>Forge</main>'
+          : 'Forge\n',
+    );
   }
   return fixture;
 };
@@ -51,5 +63,11 @@ describe('generated build validation', () => {
     const unresolvedToken = '__FORGE_' + 'SITE_NAME__';
     await writeFile(join(fixture, 'index.html'), `<p>${unresolvedToken}</p>`);
     await expect(validateBuild(fixture)).rejects.toThrow(unresolvedToken);
+  });
+
+  test('reports a missing child sitemap', async () => {
+    const fixture = await createFixture();
+    await writeFile(join(fixture, 'sitemap-index.xml'), sitemapIndex.replace(/.*etch.*\n/u, ''));
+    await expect(validateBuild(fixture)).rejects.toThrow('https://www.rm-industries.com/etch/sitemap-index.xml');
   });
 });
