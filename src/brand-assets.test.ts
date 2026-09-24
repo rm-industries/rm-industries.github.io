@@ -35,8 +35,8 @@ describe('company brand assets', () => {
     expect(socialCard).toContain('viewBox="0 0 1200 630"');
     expect(socialCard).toContain('<title>RM Industries</title>');
     expect(socialCard).toContain('<desc>RM Industries social sharing card</desc>');
-    expect(socialCard).toContain("font-family=\"'Fira Sans', system-ui, sans-serif\"");
-    expect(socialCard).toContain("font-family=\"'Fira Code', ui-monospace, monospace\"");
+    expect(socialCard).toContain('font-family="\'Fira Sans\', system-ui, sans-serif"');
+    expect(socialCard).toContain('font-family="\'Fira Code\', ui-monospace, monospace"');
     expect(pathData(socialCard)).toEqual(pathData(logo));
 
     for (const color of ['#1e1e2e', '#181825', '#cdd6f4', '#cba6f7']) {

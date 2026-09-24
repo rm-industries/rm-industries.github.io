@@ -31,12 +31,11 @@ Forge owns content-pipeline and website-building imagery. Etch owns plans, modul
 
 ## Asset ownership
 
-| Asset | Purpose | Rules |
-| --- | --- | --- |
-| `public/logo.svg` | Company navigation and footer | Transparent, theme-aware, `96 × 64` view box |
-| `public/favicon.svg` | Browser and installed-app identity | Transparent, theme-aware, intentional clear space |
-| `public/social-card.svg` | Social sharing | Static Mocha surface, `1200 × 630`, current monogram and Fira typography |
-| `ProblemPath.astro` | Company story illustration | Decorative, company-only friction-to-tool motif |
-| `/forge/favicon.svg` | Forge project card | Owned by Forge; preserve its geometry and transparency |
-| `/etch/logo.svg` | Etch project card | Owned by Etch; preserve its geometry and transparency |
-
+| Asset                    | Purpose                            | Rules                                                                    |
+| ------------------------ | ---------------------------------- | ------------------------------------------------------------------------ |
+| `public/logo.svg`        | Company navigation and footer      | Transparent, theme-aware, `96 × 64` view box                             |
+| `public/favicon.svg`     | Browser and installed-app identity | Transparent, theme-aware, intentional clear space                        |
+| `public/social-card.svg` | Social sharing                     | Static Mocha surface, `1200 × 630`, current monogram and Fira typography |
+| `ProblemPath.astro`      | Company story illustration         | Decorative, company-only friction-to-tool motif                          |
+| `/forge/favicon.svg`     | Forge project card                 | Owned by Forge; preserve its geometry and transparency                   |
+| `/etch/logo.svg`         | Etch project card                  | Owned by Etch; preserve its geometry and transparency                    |
