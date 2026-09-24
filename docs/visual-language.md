@@ -1,6 +1,8 @@
 # RM Industries website visual language
 
-The company site is the shared front door for RM Industries. It uses the same Catppuccin palette and Fira typography as the project sites without making Forge and Etch look interchangeable.
+The company site is the shared front door for RM Industries.
+
+It uses the same Catppuccin palette and Fira typography as the project sites. Forge and Etch remain visually distinct.
 
 ## Company identity
 
@@ -11,13 +13,18 @@ The company site is the shared front door for RM Industries. It uses the same Ca
 
 ## Visual motif
 
-The company motif is **friction becoming a useful tool**. The homepage's directional path, soft radial fields, workshop language, and restrained grids support that story.
+The company motif is **friction becoming a useful tool**.
 
-Forge owns content-pipeline and website-building imagery. Etch owns plans, modules, terminals, and environment-composition imagery. Project marks remain unchanged when shown on the company site and sit on a neutral surface so they do not compete with company branding.
+The homepage's directional path, soft radial fields, workshop language, and restrained grids support that story.
+
+- Forge owns content-pipeline and website-building imagery.
+- Etch owns plans, modules, terminals, and environment-composition imagery.
+- Project marks remain unchanged on the company site and sit on neutral surfaces.
 
 ## Color and type
 
-- Use DaisyUI semantic tokens for interface colors. Hard-coded Catppuccin values are reserved for static SVG assets that cannot consume CSS theme tokens.
+- Use DaisyUI semantic tokens for interface colors.
+- Reserve hard-coded Catppuccin values for static SVG assets that cannot consume CSS theme tokens.
 - Use Fira Sans for prose and interface text and Fira Code for labels, metadata, and technical text.
 - Social graphics use the Mocha palette because social-image renderers do not expose the visitor's theme preference.
 
