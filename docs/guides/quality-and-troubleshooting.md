@@ -12,10 +12,14 @@ npm run quality
 ```
 
 - `quality:static` checks formatting, code, CSS, Markdown, spelling, unused code,
-  types, Astro diagnostics, and dependency policy.
+  types, and Astro diagnostics.
 - `quality:core` adds coverage-enforced unit tests, a production build, and
   required-output validation.
 - `quality` adds Playwright browser/accessibility tests and Lighthouse budgets.
+
+Run `npm run audit` separately when reviewing dependency changes. Pull-request
+workflows report dependency findings without blocking remediation, while pushes
+to `main` must pass the dependency audit before deployment.
 
 Use the focused command while developing and run `npm run quality` before
 requesting review. The complete pipeline stops at the first failure.
