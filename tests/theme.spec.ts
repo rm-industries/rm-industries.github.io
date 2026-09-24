@@ -33,10 +33,7 @@ test('makes every Catppuccin flavor available explicitly', async ({ page }) => {
   }
 });
 
-test('uses self-hosted Fira fonts and presents a visible keyboard focus indicator', async ({
-  browserName,
-  page,
-}) => {
+test('uses self-hosted Fira fonts and presents a visible keyboard focus indicator', async ({ browserName, page }) => {
   const fontRequests: string[] = [];
   page.on('request', (request) => {
     if (request.resourceType() === 'font') fontRequests.push(request.url());
@@ -44,9 +41,12 @@ test('uses self-hosted Fira fonts and presents a visible keyboard focus indicato
 
   await page.goto(resolvePreviewPath('/'));
   expect(await page.locator('html').evaluate((element) => getComputedStyle(element).fontFamily)).toContain('Fira Sans');
-  expect(await page.locator('.font-mono').first().evaluate((element) => getComputedStyle(element).fontFamily)).toContain(
-    'Fira Code',
-  );
+  expect(
+    await page
+      .locator('.font-mono')
+      .first()
+      .evaluate((element) => getComputedStyle(element).fontFamily),
+  ).toContain('Fira Code');
   await page.keyboard.press(browserName === 'webkit' && process.platform === 'darwin' ? 'Alt+Tab' : 'Tab');
 
   await expect(page.locator('a').first()).toBeFocused();
