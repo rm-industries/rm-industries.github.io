@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/aggregate-sitemaps.ts",
     "preview": "astro preview",
     "validate:build": "node scripts/validate-build.ts",
     "astro": "astro",

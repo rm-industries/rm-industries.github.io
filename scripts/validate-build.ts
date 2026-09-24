@@ -15,6 +15,10 @@ const requiredOutputPaths = [
 ] as const;
 
 const forbiddenOutputPatterns = [/__FORGE_[A-Z0-9_]+__/u, /FORGE_[A-Z0-9_]+_PLACEHOLDER/u] as const;
+const requiredSitemapLocations = [
+  'https://www.rm-industries.com/forge/sitemap-index.xml',
+  'https://www.rm-industries.com/etch/sitemap-index.xml',
+] as const;
 
 const listFiles = async (directory: string, root = directory): Promise<string[]> => {
   const entries = await readdir(directory, { withFileTypes: true });
@@ -39,6 +43,14 @@ export const validateBuild = async (outputDirectory: string) => {
   const missingPaths = requiredOutputPaths.filter((path) => !files.includes(path));
   if (missingPaths.length > 0) {
     throw new Error(`Build output is missing required paths:\n${missingPaths.join('\n')}`);
+  }
+
+  const sitemapIndex = await readFile(join(output, 'sitemap-index.xml'), 'utf8');
+  const missingSitemaps = requiredSitemapLocations.filter(
+    (location) => !sitemapIndex.includes(`<loc>${location}</loc>`),
+  );
+  if (missingSitemaps.length > 0) {
+    throw new Error(`Sitemap index is missing required locations:\n${missingSitemaps.join('\n')}`);
   }
 
   for (const path of files) {
