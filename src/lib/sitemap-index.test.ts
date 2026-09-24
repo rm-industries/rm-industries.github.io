@@ -21,7 +21,7 @@ describe('addSitemapsToIndex', () => {
     const url = 'https://www.rm-industries.com/forge/sitemap-index.xml';
     const updated = addSitemapsToIndex(addSitemapsToIndex(index, [url]), [url]);
 
-    expect(updated.match(new RegExp(url, 'gu'))).toHaveLength(1);
+    expect(updated.split(url)).toHaveLength(2);
   });
 
   it('rejects malformed sitemap indexes', () => {

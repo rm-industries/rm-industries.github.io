@@ -18,6 +18,7 @@ export default defineConfig({
     'prefersdark',
     'Rahul',
     'Sveltia',
+    'sitemapindex',
     'unreviewed',
     'WCAG',
     'Zizmor',
