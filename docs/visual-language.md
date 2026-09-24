@@ -28,6 +28,23 @@ The homepage's directional path, soft radial fields, workshop language, and rest
 - Use Fira Sans for prose and interface text and Fira Code for labels, metadata, and technical text.
 - Social graphics use the Mocha palette because social-image renderers do not expose the visitor's theme preference.
 
+## Components and semantic roles
+
+- `primary` identifies the principal action in a section. A project name or category does not change that hierarchy.
+- `outline` identifies a meaningful alternative to the principal action.
+- `ghost` is reserved for low-emphasis controls such as the mobile menu trigger.
+- Neutral badges describe categories. Primary soft badges identify numbered company principles.
+- `success`, `warning`, and `error` communicate real states. They are not decorative project colors.
+- `secondary` and `accent` are available for supporting brand expression, not to distinguish otherwise equivalent actions.
+
+Use DaisyUI cards, badges, buttons, menus, navigation, pagination, status,
+and hero components before creating a custom primitive. Tailwind utilities
+remain appropriate for spacing, responsive layout, and composition.
+
+`ProblemPath.astro` is the intentional exception. It tells the company-specific
+friction-to-tool story that DaisyUI does not model, while composing DaisyUI
+cards and badges internally.
+
 ## Accessibility and responsive use
 
 - Decorative graphics must use `aria-hidden="true"` or an empty alternative when equivalent text is adjacent.

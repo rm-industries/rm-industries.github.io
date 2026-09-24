@@ -13,7 +13,7 @@ import PrincipleCard from '../components/company/PrincipleCard.astro';
           <div class="badge badge-primary badge-outline badge-lg mb-7 h-auto py-2 font-mono text-sm font-medium tracking-[0.1em] uppercase sm:text-base">Independent software company</div>
           <h1 id="company-heading" class="m-0 max-w-[11ch] text-[clamp(3.25rem,7vw,6.5rem)] leading-[0.94] font-bold tracking-[-0.06em]">We turn everyday friction into useful software.</h1>
           <p class="mt-8 max-w-xl text-xl leading-relaxed sm:text-2xl">RM Industries looks closely at how people work, finds the parts that get in the way, and builds focused tools to make them better.</p>
-          <div class="mt-9 flex flex-wrap gap-3"><a href="#work" class="btn btn-primary">See what we’re building <span aria-hidden="true">↓</span></a><a href="/about/" class="btn btn-ghost">How we work <span aria-hidden="true">→</span></a></div>
+          <div class="mt-9 flex flex-wrap gap-3"><a href="#work" class="btn btn-primary">See what we’re building <span aria-hidden="true">↓</span></a><a href="/about/" class="btn btn-outline">How we work <span aria-hidden="true">→</span></a></div>
         </div>
         <ProblemPath />
       </div>
@@ -23,8 +23,8 @@ import PrincipleCard from '../components/company/PrincipleCard.astro';
       <div class="mb-10 max-w-2xl"><p class="text-primary mb-3 font-mono text-sm font-medium tracking-[0.12em] uppercase">Our approach</p><h2 id="approach-heading" class="m-0 text-[clamp(2.25rem,5vw,4rem)] leading-none font-bold tracking-[-0.045em]">Small on purpose. Useful by design.</h2></div>
       <div class="grid gap-5 md:grid-cols-3">
         <PrincipleCard number="01" title="Notice the friction" description="Start with a real pain point, not a feature list or a trend." />
-        <PrincipleCard number="02" title="Build the focused thing" description="Make the smallest product that solves the problem exceptionally well." accent="secondary" />
-        <PrincipleCard number="03" title="Share when it’s ready" description="Keep exploring privately, then publish work that can stand on its own." accent="accent" />
+        <PrincipleCard number="02" title="Build the focused thing" description="Make the smallest product that solves the problem exceptionally well." />
+        <PrincipleCard number="03" title="Share when it’s ready" description="Keep exploring privately, then publish work that can stand on its own." />
       </div>
     </section>
 
@@ -34,7 +34,7 @@ import PrincipleCard from '../components/company/PrincipleCard.astro';
         <article class="card bg-base-200 border-base-300 overflow-hidden border shadow-lg lg:card-side">
           <figure class="bg-neutral relative min-h-72 overflow-hidden p-10 lg:w-[42%]"><div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(currentColor 1px, transparent 1px); background-size: 24px 24px;"></div><div class="relative grid aspect-square w-48 place-items-center p-3 sm:w-64 sm:p-4"><img class="size-full object-contain" src="/forge/favicon.svg" width="224" height="224" alt="Forge" /></div></figure>
           <div class="card-body justify-center gap-6 p-7 sm:p-10 lg:p-14">
-            <div class="flex flex-wrap gap-2"><span class="badge badge-primary">Open source</span><span class="badge badge-outline">Astro</span><span class="badge badge-outline">Developer tooling</span></div>
+            <div class="flex flex-wrap gap-2"><span class="badge badge-neutral">Open source</span><span class="badge badge-outline">Astro</span><span class="badge badge-outline">Developer tooling</span></div>
             <div><h3 class="card-title mb-3 text-4xl sm:text-5xl">A better starting point for the web.</h3><p class="m-0 max-w-2xl text-lg leading-relaxed">Forge is an opinionated Astro starter with beautiful defaults, Git-backed content management, and production-ready GitHub automation.</p></div>
             <div class="card-actions"><a href="https://www.rm-industries.com/forge/" class="btn btn-primary">Explore Forge <span aria-hidden="true">→</span></a></div>
           </div>
@@ -42,16 +42,16 @@ import PrincipleCard from '../components/company/PrincipleCard.astro';
         <article class="card bg-base-200 border-base-300 overflow-hidden border shadow-lg lg:card-side lg:flex-row-reverse">
           <figure class="bg-neutral relative min-h-72 overflow-hidden p-10 lg:w-[42%]"><div class="absolute inset-0 opacity-20" style="background-image: linear-gradient(45deg, currentColor 1px, transparent 1px); background-size: 24px 24px;"></div><div class="relative grid aspect-square w-48 place-items-center p-3 sm:w-64 sm:p-4"><img class="size-full object-contain" src="/etch/logo.svg" width="224" height="224" alt="Etch" /></div></figure>
           <div class="card-body justify-center gap-6 p-7 sm:p-10 lg:p-14">
-            <div class="flex flex-wrap gap-2"><span class="badge badge-secondary">Open source</span><span class="badge badge-outline">Environment management</span><span class="badge badge-outline">Developer tooling</span></div>
+            <div class="flex flex-wrap gap-2"><span class="badge badge-neutral">Open source</span><span class="badge badge-outline">Environment management</span><span class="badge badge-outline">Developer tooling</span></div>
             <div><h3 class="card-title mb-3 text-4xl sm:text-5xl">Make your environment yours.</h3><p class="m-0 max-w-2xl text-lg leading-relaxed">Etch is a portable, declarative environment manager for keeping the tools and settings that shape your workspace consistent.</p></div>
-            <div class="card-actions"><a href="https://www.rm-industries.com/etch/" class="btn btn-secondary">Explore Etch <span aria-hidden="true">→</span></a></div>
+            <div class="card-actions"><a href="https://www.rm-industries.com/etch/" class="btn btn-primary">Explore Etch <span aria-hidden="true">→</span></a></div>
           </div>
         </article>
       </div>
     </section>
 
     <section class="py-12 sm:py-20" aria-labelledby="contact-heading">
-      <div class="card bg-base-300 text-base-content overflow-hidden shadow-xl"><div class="card-body gap-7 p-8 sm:p-12 lg:flex-row lg:items-end lg:justify-between"><div><p class="mb-3 font-mono text-sm font-medium tracking-[0.12em] uppercase">Keep an eye on the workshop</p><h2 id="contact-heading" class="m-0 max-w-[14ch] text-3xl leading-tight font-bold sm:text-5xl">Follow the work as it takes shape.</h2></div><div class="card-actions shrink-0"><a class="btn btn-primary" href="https://github.com/rm-industries" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="btn" href="mailto:rahul@rm-industries.com">Email us ↗</a></div></div></div>
+      <div class="card bg-base-300 text-base-content overflow-hidden shadow-xl"><div class="card-body gap-7 p-8 sm:p-12 lg:flex-row lg:items-end lg:justify-between"><div><p class="mb-3 font-mono text-sm font-medium tracking-[0.12em] uppercase">Keep an eye on the workshop</p><h2 id="contact-heading" class="m-0 max-w-[14ch] text-3xl leading-tight font-bold sm:text-5xl">Follow the work as it takes shape.</h2></div><div class="card-actions shrink-0"><a class="btn btn-primary" href="https://github.com/rm-industries" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="btn btn-outline" href="mailto:rahul@rm-industries.com">Email us ↗</a></div></div></div>
     </section>
   </Container>
 </BaseLayout>
