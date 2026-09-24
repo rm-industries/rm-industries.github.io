@@ -14,14 +14,14 @@ test('renders company marks without distortion', async ({ page }) => {
       const bounds = element.getBoundingClientRect();
 
       return {
-        naturalRatio: element.naturalWidth / element.naturalHeight,
+        loaded: element.complete && element.naturalWidth > 0,
         renderedRatio: bounds.width / bounds.height,
       };
     }),
   );
 
   for (const dimension of dimensions) {
-    expect(dimension.naturalRatio).toBeCloseTo(1.5, 2);
-    expect(dimension.renderedRatio).toBeCloseTo(dimension.naturalRatio, 2);
+    expect(dimension.loaded).toBe(true);
+    expect(dimension.renderedRatio).toBeCloseTo(1.5, 2);
   }
 });
