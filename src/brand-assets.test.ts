@@ -19,13 +19,13 @@ describe('company brand assets', () => {
   });
 
   test('keeps the logo and favicon transparent, theme-aware, and geometrically aligned', () => {
-    expect(logo).toContain('viewBox="0 0 96 64"');
-    expect(favicon).toContain('viewBox="0 0 112 80"');
+    expect(logo).toContain('viewBox="256 172 1020 680"');
+    expect(favicon).toContain('viewBox="256 172 1020 680"');
     expect(logo).not.toContain('<rect');
     expect(favicon).not.toContain('<rect');
     expect(pathData(favicon)).toEqual(pathData(logo));
 
-    for (const color of ['#4c4f69', '#cdd6f4', '#cba6f7']) {
+    for (const color of ['#4c4f69', '#7287fd', '#cdd6f4', '#b4befe', '#cba6f7']) {
       expect(logo).toContain(color);
       expect(favicon).toContain(color);
     }
@@ -39,7 +39,7 @@ describe('company brand assets', () => {
     expect(socialCard).toContain('font-family="\'Fira Code\', ui-monospace, monospace"');
     expect(pathData(socialCard)).toEqual(pathData(logo));
 
-    for (const color of ['#1e1e2e', '#181825', '#cdd6f4', '#cba6f7']) {
+    for (const color of ['#1e1e2e', '#181825', '#cdd6f4', '#b4befe', '#cba6f7']) {
       expect(socialCard).toContain(color);
     }
   });

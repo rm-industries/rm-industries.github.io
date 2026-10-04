@@ -1,11 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
   <title>RM Industries</title>
   <desc>RM Industries social sharing card</desc>
+  <defs>
+    <linearGradient id="ice" gradientUnits="userSpaceOnUse" x1="417" y1="245" x2="850" y2="755">
+      <stop stop-color="#cdd6f4" />
+      <stop offset="1" stop-color="#bac2de" />
+    </linearGradient>
+    <linearGradient id="lavender" gradientUnits="userSpaceOnUse" x1="780" y1="380" x2="1160" y2="765">
+      <stop stop-color="#b4befe" />
+      <stop offset="1" stop-color="#cba6f7" />
+    </linearGradient>
+  </defs>
   <rect width="1200" height="630" fill="#1e1e2e" />
   <rect x="72" y="72" width="1056" height="486" rx="40" fill="#181825" stroke="#45475a" stroke-width="2" />
-  <g transform="translate(132 120) scale(1.8)">
-    <path d="M4 10h22c11 0 18 6 18 16 0 7-3 12-10 15l14 13-8 7-19-18h-6v17H4V10Zm11 10v13h11c5 0 8-2 8-7s-3-6-8-6H15Z" fill="#cdd6f4" />
-    <path d="M50 10h11l12 20 12-20h11v50H85V29L73 48 61 29v31H50V10Z" fill="#cba6f7" />
+  <g transform="translate(68 102) scale(0.16)">
+    <path fill="url(#ice)" d="M400 226H691C775 226 834 285 834 374C834 446 784 505 713 517L598 403H687C708 403 720 390 720 371C720 352 708 340 687 340H514Z" />
+    <path fill="url(#ice)" d="M436 403H544L874 728H727L550 552V724L436 809Z" />
+    <path fill="url(#lavender)" d="M760 569L1132 257V809L1018 724V485L825 634Z" />
   </g>
   <text x="132" y="347" fill="#cdd6f4" font-family="'Fira Sans', system-ui, sans-serif" font-size="88" font-weight="700">RM Industries</text>
   <text x="132" y="427" fill="#bac2de" font-family="'Fira Sans', system-ui, sans-serif" font-size="34">We turn everyday friction into useful software.</text>
