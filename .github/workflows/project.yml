@@ -154,6 +154,7 @@ jobs:
       - format
       - spellcheck
       - static-quality
+      - unit-tests
     runs-on: ubuntu-latest
 
     permissions:
@@ -301,8 +302,8 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
-  project:
-    name: Project
+  deploy:
+    name: Deploy GitHub Pages
     needs:
       - format
       - spellcheck
@@ -313,28 +314,6 @@ jobs:
       - validate-build
       - browser-tests
       - lighthouse
-    if: always()
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-
-    steps:
-      - name: Confirm project checks
-        env:
-          CHECK_RESULTS: ${{ toJSON(needs) }}
-        run: |
-          if ! jq -e 'all(.[]; .result == "success")' <<< "$CHECK_RESULTS"; then
-            echo '::error title=Project validation failed::All required project checks must succeed.'
-            exit 1
-          fi
-          echo 'All project checks passed.'
-
-  deploy:
-    name: Deploy GitHub Pages
-    needs:
-      - build
-      - project
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
 
