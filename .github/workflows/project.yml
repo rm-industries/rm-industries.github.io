@@ -62,8 +62,8 @@ jobs:
       - name: Check spelling
         run: npm run spellcheck
 
-  static-quality:
-    name: Static quality
+  lint-code:
+    name: Lint code
     runs-on: ubuntu-latest
 
     permissions:
@@ -80,8 +80,92 @@ jobs:
         with:
           node-version: '26.x'
 
-      - name: Run remaining static quality checks
-        run: npm run quality:static:ci
+      - name: Lint code
+        run: npm run lint:code
+
+  lint-styles:
+    name: Lint styles
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: $/.github/actions/setup-project
+        with:
+          node-version: '26.x'
+
+      - name: Lint styles
+        run: npm run lint:css
+
+  lint-markdown:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: $/.github/actions/setup-project
+        with:
+          node-version: '26.x'
+
+      - name: Lint Markdown
+        run: npm run lint:markdown
+
+  audit-unused:
+    name: Audit unused code
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: $/.github/actions/setup-project
+        with:
+          node-version: '26.x'
+
+      - name: Audit unused code
+        run: npm run audit:unused
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: $/.github/actions/setup-project
+        with:
+          node-version: '26.x'
+
+      - name: Typecheck
+        run: npm run typecheck && npm run astro:check
 
   dependency-audit:
     name: Dependency audit
@@ -153,7 +237,11 @@ jobs:
     needs:
       - format
       - spellcheck
-      - static-quality
+      - lint-code
+      - lint-styles
+      - lint-markdown
+      - audit-unused
+      - typecheck
       - unit-tests
     runs-on: ubuntu-latest
 
@@ -307,7 +395,11 @@ jobs:
     needs:
       - format
       - spellcheck
-      - static-quality
+      - lint-code
+      - lint-styles
+      - lint-markdown
+      - audit-unused
+      - typecheck
       - dependency-audit
       - unit-tests
       - build

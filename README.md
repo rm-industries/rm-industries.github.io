@@ -83,11 +83,13 @@ the documented `npm run quality` command as a single ordered pipeline.
 ## Continuous integration
 
 The generated `.github/workflows/project.yml` runs on pull requests targeting
-`main` and on pushes to `main`. It separates static quality, coverage-enforced
-unit tests, the validated production build, browser and accessibility tests,
-and Lighthouse budgets so failures identify the affected gate directly. The
-required `Project` result succeeds only after every release-blocking job passes.
-On pushes to `main`, that result unlocks a separate GitHub Pages deployment;
+`main` and on pushes to `main`. Formatting, spelling, code lint, styles lint,
+Markdown lint, unused-code auditing, and typechecking run as independent jobs.
+Typechecking includes both TypeScript and Astro diagnostics. These checks and
+coverage-enforced unit tests gate the production build. Branch protection
+requires each check, the build, output validation, browser and accessibility
+tests, and Lighthouse budgets directly. On pushes to `main`, all validation
+jobs and the dependency audit gate a separate GitHub Pages deployment;
 pull requests never upload or deploy a Pages artifact. Deployment setup,
 project-site URLs, custom domains, and environment protections are documented in
 [`docs/github-pages.md`](docs/github-pages.md).
