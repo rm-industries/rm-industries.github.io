@@ -37,6 +37,10 @@ updates:
       - dependencies
       - npm
     groups:
+      vitest:
+        patterns:
+          - vitest
+          - '@vitest/*'
       production-dependencies:
         dependency-type: production
         exclude-patterns:
