@@ -62,8 +62,8 @@ jobs:
       - name: Check spelling
         run: npm run spellcheck
 
-  static-quality:
-    name: Static quality
+  lint-code:
+    name: Lint code
     runs-on: ubuntu-latest
 
     permissions:
@@ -80,11 +80,11 @@ jobs:
         with:
           node-version: '26.x'
 
-      - name: Run remaining static quality checks
-        run: npm run quality:static:ci
+      - name: Lint code
+        run: npm run lint:code
 
-  dependency-audit:
-    name: Dependency audit
+  lint-styles:
+    name: Lint styles
     runs-on: ubuntu-latest
 
     permissions:
@@ -101,22 +101,71 @@ jobs:
         with:
           node-version: '26.x'
 
-      - name: Audit pull-request dependencies
-        id: audit
-        if: github.event_name == 'pull_request'
-        continue-on-error: true
-        run: npm run audit
+      - name: Lint styles
+        run: npm run lint:css
 
-      - name: Report dependency audit
-        if: steps.audit.outcome == 'failure'
-        run: |
-          echo '::warning title=Dependency security findings::Review Dependabot alerts and audit output. Dependency findings are reported but do not block pull-request remediation.'
-          echo '## Dependency security findings' >> "$GITHUB_STEP_SUMMARY"
-          echo 'The dependency audit found blocking-severity advisories. Review the audit output and Dependabot alerts. Deployment security gates remain blocking.' >> "$GITHUB_STEP_SUMMARY"
+  lint-markdown:
+    name: Lint Markdown
+    runs-on: ubuntu-latest
 
-      - name: Enforce dependency audit before deployment
-        if: github.event_name == 'push'
-        run: npm run audit
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: $/.github/actions/setup-project
+        with:
+          node-version: '26.x'
+
+      - name: Lint Markdown
+        run: npm run lint:markdown
+
+  audit-unused:
+    name: Audit unused code
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: $/.github/actions/setup-project
+        with:
+          node-version: '26.x'
+
+      - name: Audit unused code
+        run: npm run audit:unused
+
+  typecheck:
+    name: Typecheck
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Setup project
+        uses: $/.github/actions/setup-project
+        with:
+          node-version: '26.x'
+
+      - name: Typecheck
+        run: npm run typecheck && npm run astro:check
 
   unit-tests:
     name: Unit tests and coverage
@@ -153,7 +202,11 @@ jobs:
     needs:
       - format
       - spellcheck
-      - static-quality
+      - lint-code
+      - lint-styles
+      - lint-markdown
+      - audit-unused
+      - typecheck
       - unit-tests
     runs-on: ubuntu-latest
 
@@ -307,8 +360,11 @@ jobs:
     needs:
       - format
       - spellcheck
-      - static-quality
-      - dependency-audit
+      - lint-code
+      - lint-styles
+      - lint-markdown
+      - audit-unused
+      - typecheck
       - unit-tests
       - build
       - validate-build
