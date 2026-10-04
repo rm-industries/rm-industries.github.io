@@ -17,9 +17,10 @@ npm run quality
   required-output validation.
 - `quality` adds Playwright browser/accessibility tests and Lighthouse budgets.
 
-Run `npm run audit` separately when reviewing dependency changes. Pull-request
-workflows report dependency findings without blocking remediation, while pushes
-to `main` must pass the dependency audit before deployment.
+Run `npm run audit` separately to review the full dependency graph. Following
+the portfolio repository, the full audit is a manual check rather than a CI or
+deployment gate. Dependency review in the security workflow checks changes
+introduced by pull requests; Dependabot tracks existing vulnerabilities.
 
 Use the focused command while developing and run `npm run quality` before
 requesting review. The complete pipeline stops at the first failure.
