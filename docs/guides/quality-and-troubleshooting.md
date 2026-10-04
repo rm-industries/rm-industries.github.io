@@ -19,8 +19,15 @@ npm run quality
 
 Run `npm run audit` separately to review the full dependency graph. Following
 the portfolio repository, the full audit is a manual check rather than a CI or
-deployment gate. Dependency review in the security workflow checks changes
-introduced by pull requests; Dependabot tracks existing vulnerabilities.
+deployment gate. Dependabot tracks existing vulnerabilities.
+
+Dependency review separately fails the security job when a pull request
+introduces a known high- or critical-severity vulnerability. It runs on every
+pull request targeting `main`, including those without dependency changes.
+Following the portfolio repository's policy, `Review dependencies` is not a
+required branch-protection check; a failed review is visible for maintainers to
+resolve but is not an enforced merge blocker. Do not bypass findings with broad
+allowlists or forced dependency downgrades.
 
 Use the focused command while developing and run `npm run quality` before
 requesting review. The complete pipeline stops at the first failure.
