@@ -3,7 +3,8 @@ import { defineConfig, devices } from '@playwright/test';
 const deploymentUrl = process.env.DEPLOYMENT_URL;
 
 export default defineConfig({
-  testDir: './tests/smoke',
+  testDir: './tests',
+  testMatch: '**/deployment.spec.ts',
   outputDir: 'test-results',
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
