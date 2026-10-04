@@ -13,7 +13,7 @@
   </defs>
   <rect width="1200" height="630" fill="#1e1e2e" />
   <rect x="72" y="72" width="1056" height="486" rx="40" fill="#181825" stroke="#45475a" stroke-width="2" />
-  <g transform="translate(0 32) scale(0.33)">
+  <g transform="translate(20 40) scale(0.28)">
     <path fill="url(#ice)" d="M400 226H691C775 226 834 285 834 374C834 446 784 505 713 517L598 403H687C708 403 720 390 720 371C720 352 708 340 687 340H514Z" />
     <path fill="url(#ice)" d="M436 403H544L874 728H727L550 552V724L436 809Z" />
     <path fill="url(#lavender)" d="M760 569L1132 257V809L1018 724V485L825 634Z" />
