@@ -93,6 +93,12 @@ pull requests never upload or deploy a Pages artifact. Deployment setup,
 project-site URLs, custom domains, and environment protections are documented in
 [`docs/github-pages.md`](docs/github-pages.md).
 
+After deployment, a separate Chromium smoke job checks the URL returned by
+GitHub Pages for HTTPS content, Forge metadata, working assets, crawler routes,
+and mobile layout. Failures retain screenshots, traces, and browser reports.
+The smoke suite is excluded from ordinary browser tests. To check a live site
+manually, run `DEPLOYMENT_URL=https://www.rm-industries.com/ npm run test:smoke`.
+
 The workflow installs dependencies with `npm ci`, caches npm downloads using
 the lockfile, cancels superseded runs on the same Git reference, and grants only
 read access to repository contents. Pull requests receive no secrets or write
