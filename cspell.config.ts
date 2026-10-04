@@ -17,6 +17,7 @@ export default defineConfig({
     'Macchiato',
     'prefersdark',
     'Rahul',
+    'requestfailed',
     'Sveltia',
     'sitemapindex',
     'unreviewed',

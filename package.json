@@ -29,6 +29,7 @@
     "test:a11y": "playwright test tests/accessibility.spec.ts",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
+    "test:smoke": "playwright test --config playwright.smoke.config.ts",
     "test:unit": "vitest run",
     "quality": "npm run quality:core && npm run test:e2e && npm run lighthouse:ci",
     "quality:core": "npm run quality:static && npm run test:coverage && npm run build && npm run validate:build",
