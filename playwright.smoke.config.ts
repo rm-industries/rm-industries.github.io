@@ -8,7 +8,15 @@ export default defineConfig({
   outputDir: 'test-results',
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 2 : 0,
-  reporter: process.env.CI ? [['github'], ['html', { open: 'never' }]] : 'list',
+  reporter: process.env.GITLAB_CI
+    ? [
+        ['list'],
+        ['junit', { outputFile: 'test-results/smoke.xml', includeProjectInTestName: true }],
+        ['html', { open: 'never' }],
+      ]
+    : process.env.CI
+      ? [['github'], ['html', { open: 'never' }]]
+      : 'list',
   use: {
     baseURL: deploymentUrl?.endsWith('/') ? deploymentUrl : deploymentUrl && `${deploymentUrl}/`,
     ...devices['Desktop Chrome'],
