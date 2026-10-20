@@ -28,7 +28,7 @@ test('opens mobile navigation and follows a configured link', async ({ page }) =
   await expect(page.getByRole('heading', { level: 1, name: 'Curious about the rough edges.' })).toBeVisible();
 });
 
-test('links the featured projects to their public websites', async ({ page }) => {
+test('links the featured projects to their public destinations', async ({ page }) => {
   await page.goto(resolvePreviewPath('/'));
 
   await expect(page.getByRole('link', { name: /Explore Forge/u })).toHaveAttribute(
@@ -38,5 +38,9 @@ test('links the featured projects to their public websites', async ({ page }) =>
   await expect(page.getByRole('link', { name: /Explore Etch/u })).toHaveAttribute(
     'href',
     'https://www.rm-industries.com/etch/',
+  );
+  await expect(page.getByRole('link', { name: /Explore Headstamp/u })).toHaveAttribute(
+    'href',
+    'https://github.com/rm-industries/headstamp',
   );
 });
