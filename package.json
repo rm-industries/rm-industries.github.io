@@ -59,7 +59,7 @@
     "cspell": "^10.3.6",
     "daisyui": "^5.7.50",
     "knip": "^6.41.0",
-    "markdownlint-cli": "^0.49.0",
+    "markdownlint-cli": "^0.50.0",
     "oxfmt": "^0.72.0",
     "oxlint": "^1.87.0",
     "stylelint": "^17.16.0",
