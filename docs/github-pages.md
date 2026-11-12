@@ -1,8 +1,9 @@
 # GitHub Pages deployment
 
 The project workflow publishes the validated production build to GitHub Pages
-after every push to `main`. Pull requests build and test the site, but they do
-not upload a Pages artifact or run a deployment.
+after every push to `main` and monthly at 09:17 UTC on the first day. Pull
+requests build and test the site, but they do not upload a Pages artifact or
+run a deployment.
 
 ## Enable deployment
 
@@ -54,3 +55,15 @@ configuration.
 Do not configure both a repository pathname and a custom domain. A custom domain
 is served from its root, while a project site uses the repository name as its
 base path.
+
+## Renew security.txt
+
+The production build generates `/.well-known/security.txt` with the monitored
+contact in `src/config/security.ts` and an expiration six calendar months from
+build time. The Pages upload keeps the hidden `.well-known` directory. Deployment
+smoke tests check that the public expiration matches the uploaded archive and
+that the apex domain redirects to the canonical URL.
+
+After the first monthly run, compare the published expiration with the previous
+deployment to verify that it advanced on the same commit. Rahul reviews the
+reporting inbox separately every six months.
