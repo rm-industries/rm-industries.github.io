@@ -1,0 +1,44 @@
+import { mkdir, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
+import { createRequire } from 'node:module';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+import { afterEach, beforeEach, expect, it } from 'vitest';
+
+import { security } from '../../config/security';
+import securityTxt from './index';
+import { securityTxtPath } from './render';
+
+// Astro's Vite config supplies the runtime module in tests. Load the Node build API.
+const { build } = createRequire(import.meta.url)('astro') as typeof import('astro');
+let root: string;
+const site = 'https://www.example.com/';
+
+beforeEach(async () => {
+  root = await mkdtemp(fileURLToPath(new URL('../../../node_modules/.security-txt-build-', import.meta.url)));
+  const pages = join(root, 'src/pages');
+  await mkdir(pages, { recursive: true });
+  await writeFile(join(pages, 'index.astro'), '<h1>Example</h1>');
+});
+
+afterEach(async () => {
+  await rm(root, { recursive: true, force: true });
+});
+
+it('emits security.txt in a static build when configured', async () => {
+  await build({
+    root,
+    configFile: false,
+    logLevel: 'silent',
+    site,
+    integrations: [securityTxt(security)],
+  });
+  const body = await readFile(join(root, 'dist', securityTxtPath), 'utf8');
+  expect(body).toContain('Contact: mailto:rahul@rm-industries.com\n');
+  expect(body).toContain('Canonical: https://www.example.com/.well-known/security.txt\n');
+});
+
+it('omits security.txt from a static build when disabled', async () => {
+  await build({ root, configFile: false, logLevel: 'silent', site, integrations: [securityTxt(undefined)] });
+  await expect(readFile(join(root, 'dist', securityTxtPath))).rejects.toMatchObject({ code: 'ENOENT' });
+});
