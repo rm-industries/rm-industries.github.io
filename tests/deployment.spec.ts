@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 import { security } from '../src/config/security';
 import { site } from '../src/config/site';
-import { securityTxtPath } from '../src/lib/security-txt';
+import { securityTxtPath } from '../src/integrations/security-txt/render';
 
 test.beforeAll(() => {
   const deploymentUrl = process.env.DEPLOYMENT_URL;

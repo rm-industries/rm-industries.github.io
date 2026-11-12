@@ -5,9 +5,9 @@ import { fileURLToPath } from 'node:url';
 
 import { afterEach, beforeEach, expect, it } from 'vitest';
 
-import { security } from '../config/security';
-import { securityTxtPath } from '../lib/security-txt';
-import securityTxt from './security-txt';
+import { security } from '../../config/security';
+import securityTxt from './index';
+import { securityTxtPath } from './render';
 
 // Astro's Vite config supplies the runtime module in tests. Load the Node build API.
 const { build } = createRequire(import.meta.url)('astro') as typeof import('astro');
@@ -15,7 +15,7 @@ let root: string;
 const site = 'https://www.example.com/';
 
 beforeEach(async () => {
-  root = await mkdtemp(fileURLToPath(new URL('../../node_modules/.security-txt-build-', import.meta.url)));
+  root = await mkdtemp(fileURLToPath(new URL('../../../node_modules/.security-txt-build-', import.meta.url)));
   const pages = join(root, 'src/pages');
   await mkdir(pages, { recursive: true });
   await writeFile(join(pages, 'index.astro'), '<h1>Example</h1>');
