@@ -42,7 +42,7 @@
     "@fontsource/fira-code": "^5.3.0",
     "@fontsource/fira-sans": "^5.3.0",
     "@rm-industries/content-model": "1.1.13",
-    "@sveltia/cms": "0.262.4",
+    "@sveltia/cms": "0.268.0",
     "astro": "^7.4.13"
   },
   "devDependencies": {
